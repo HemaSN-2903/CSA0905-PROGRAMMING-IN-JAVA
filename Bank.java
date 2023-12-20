@@ -1,35 +1,40 @@
-class Bank {
-    double getRateOfInterest() {
-        return 0.0; // Default implementation, to be overridden by specific banks
-    }
+interface Bank 
+{
+    double getRateOfInterest();
 }
-
-class SBI extends Bank {
-    double getRateOfInterest() {
+class SBI implements Bank 
+{
+    @Override
+    public double getRateOfInterest() 
+    {
         return 8.4;
     }
 }
-
-class ICICI extends Bank {
-    double getRateOfInterest() {
+class ICICI implements Bank 
+{
+    @Override
+    public double getRateOfInterest() 
+    {
         return 7.3;
     }
 }
-
-class AXIS extends Bank {
-    double getRateOfInterest() {
+class AXIS implements Bank 
+{
+    @Override
+    public double getRateOfInterest() 
+    {
         return 9.7;
     }
 }
-
-public class Main {
-    public static void main(String[] args) {
-        SBI sbi = new SBI();
-        ICICI icici = new ICICI();
-        AXIS axis = new AXIS();
-
-        System.out.println("Rate of Interest from SBI: " + sbi.getRateOfInterest() + "%");
-        System.out.println("Rate of Interest from ICICI: " + icici.getRateOfInterest() + "%");
-        System.out.println("Rate of Interest from AXIS: " + axis.getRateOfInterest() + "%");
+public class Main 
+{
+    public static void main(String[] args) 
+    {
+        Bank sbi = new SBI();
+        Bank icici = new ICICI();
+        Bank axis = new AXIS();
+        System.out.println("SBI Rate of Interest: " + sbi.getRateOfInterest());
+        System.out.println("ICICI Rate of Interest: " + icici.getRateOfInterest());
+        System.out.println("AXIS Rate of Interest: " + axis.getRateOfInterest());
     }
 }

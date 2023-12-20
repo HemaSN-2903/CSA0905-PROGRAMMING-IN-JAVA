@@ -1,33 +1,49 @@
- class Geometry {
-    public static double calculateArea(double radius) {
-        return Math.PI * Math.pow(radius, 2);
+import java.util.Scanner;
+class Geometry
+{
+    final double PI = 3.14159;
+    double calculateArea(double radius) 
+    {
+        return PI * radius * radius;
     }
-
-    public static double calculateVolume(double radius, double height) {
-        return Math.PI * Math.pow(radius, 2) * height;
+    double calculateVolume(double radius, double height) 
+    {
+        return PI * radius * radius * height;
     }
-
-    public static double calculateVolume(double radius, double height, boolean isCone) {
-        if (isCone) {
-            return (1.0 / 3.0) * Math.PI * Math.pow(radius, 2) * height;
-        } else {
-            return calculateVolume(radius, height); // Calculate volume of a cylinder
+    double calculateVolume(double radius, double height, boolean isCone) 
+    {
+        if (isCone) 
+        {
+            return (1.0 / 3) * PI * radius * radius * height;
+        } 
+        else 
+        {
+            return calculateVolume(radius, height);
         }
     }
-
-    public static void main(String[] args) {
-        double circleRadius = 5.0;
-        double cylinderRadius = 4.0;
-        double cylinderHeight = 6.0;
-        double coneRadius = 3.0;
-        double coneHeight = 5.0;
-
-        double circleArea = calculateArea(circleRadius);
-        double cylinderVolume = calculateVolume(cylinderRadius, cylinderHeight);
-        double coneVolume = calculateVolume(coneRadius, coneHeight, true);
-
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the radius: ");
+        double radius = scanner.nextDouble();
+        System.out.print("Enter the height: ");
+        double height = scanner.nextDouble();
+        System.out.print("Is it a cone? (true or false): ");
+        boolean isCone = scanner.nextBoolean();
+        Geometry geometryCalculator = new Geometry();
+        double circleArea = geometryCalculator.calculateArea(radius);
         System.out.println("Area of Circle: " + circleArea);
-        System.out.println("Volume of Cylinder: " + cylinderVolume);
-        System.out.println("Volume of Cone: " + coneVolume);
+        double volume;
+        if (isCone) 
+        {
+            volume = geometryCalculator.calculateVolume(radius, height, true);
+            System.out.println("Volume of Cone: " + volume);
+        } 
+        else 
+        {
+            volume = geometryCalculator.calculateVolume(radius, height);
+            System.out.println("Volume of Cylinder: " + volume);
+        }
+        scanner.close();
     }
 }

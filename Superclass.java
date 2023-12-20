@@ -1,32 +1,30 @@
-class Super {
-    int x;
-
-    Super(int x) {
-        this.x = x;
+class Superclass 
+{
+    int num;
+    Superclass(int num) 
+    {
+        this.num = num;
     }
-
-    void display() {
-        System.out.println("Superclass x: " + x);
+    void display() 
+    {
+        System.out.println("Superclass Number: " + num);
     }
 }
-
-class Subclass extends Super {
-    int y;
-
-    Subclass(int x, int y) {
-        super(x); 
-        this.y = y;
+class Subclass extends Superclass 
+{
+    int num;
+    Subclass(int num1, int num2) 
+    {
+        super(num1);
+        this.num = num2;
     }
-
-    @Override
-    void display() {
+    void display() 
+    {
         super.display(); 
-        System.out.println("Subclass y: " + y);
+        System.out.println("Subclass Number: " + num);
     }
-}
-
-class Superclass {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Subclass obj = new Subclass(100, 200);
         obj.display();
     }
